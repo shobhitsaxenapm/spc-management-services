@@ -1,3 +1,4 @@
+import { SubmissionForm } from '../components/SubmissionForm';
 import React, { useState } from 'react';
 import { Page, ContactSource } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
@@ -5,7 +6,6 @@ import { Building2, Globe, Landmark, ArrowRight, CheckCircle2, X, Users, ShieldC
 
 export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page) => void; navigateToContact: (source: ContactSource) => void }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalStep, setModalStep] = useState<'form' | 'success'>('form');
 
   return (
     <motion.div
@@ -240,24 +240,24 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
       </section>
 
       {/* Proof - Execution Numbers */}
-      <section className="py-16 bg-emerald-900 text-white">
+      <section className="py-16 bg-[#073f51] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-emerald-400 mb-2">20+</div>
-              <div className="text-sm text-emerald-100">Years of execution</div>
+              <div className="text-4xl font-bold text-[#00b1d9] mb-2">20+</div>
+              <div className="text-sm text-[#d9f5fc]">Years of execution</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-emerald-400 mb-2">10,000+</div>
-              <div className="text-sm text-emerald-100">Professionals deployed</div>
+              <div className="text-4xl font-bold text-[#00b1d9] mb-2">10,000+</div>
+              <div className="text-sm text-[#d9f5fc]">Professionals deployed</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-emerald-400 mb-2">50+</div>
-              <div className="text-sm text-emerald-100">Programs supported</div>
+              <div className="text-4xl font-bold text-[#00b1d9] mb-2">50+</div>
+              <div className="text-sm text-[#d9f5fc]">Programs supported</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-emerald-400 mb-2">Pan-India</div>
-              <div className="text-sm text-emerald-100">Recruitment reach</div>
+              <div className="text-4xl font-bold text-[#00b1d9] mb-2">Pan-India</div>
+              <div className="text-sm text-[#d9f5fc]">Recruitment reach</div>
             </div>
           </div>
         </div>
@@ -323,66 +323,13 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-white rounded-2xl shadow-2xl z-50 overflow-hidden"
             >
-              {modalStep === 'form' ? (
-                <div className="p-8">
-                  <div className="flex justify-between items-start mb-6">
-                    <div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-2">Request a Feasibility Assessment</h3>
-                      <p className="text-slate-600 text-sm">Share your requirement and our team will prepare a detailed assessment for you.</p>
-                    </div>
-                    <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600">
-                      <X className="w-5 h-5" />
-                    </button>
-                  </div>
-
-                  <form onSubmit={(e) => { e.preventDefault(); setModalStep('success'); }} className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">Target Role</label>
-                      <input required type="text" placeholder="e.g., State Program Coordinator" className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none" />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Sector</label>
-                        <select className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none bg-white">
-                          <option>Government</option>
-                          <option>Development Sector / NGO</option>
-                          <option>Public Health</option>
-                          <option>Corporate</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Location</label>
-                        <input required type="text" placeholder="e.g., New Delhi" className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none" />
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">Number of Positions (approx.)</label>
-                      <input type="text" placeholder="e.g., 10, 50, 500+" className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">Work Email</label>
-                      <input required type="email" placeholder="you@organization.com" className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none" />
-                    </div>
-                    <button type="submit" className="w-full py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors mt-4">
-                      Submit Request
-                    </button>
-                  </form>
+              <div className="p-6 sm:p-8 max-h-[85dvh] overflow-y-auto">
+                <div className="flex justify-between items-start gap-4 mb-6">
+                  <h3 className="text-2xl font-bold text-slate-900">Request a Feasibility Assessment</h3>
+                  <button aria-label="Close assessment form" onClick={() => setIsModalOpen(false)}><X className="w-5 h-5" /></button>
                 </div>
-              ) : (
-                <div className="p-8 text-center">
-                  <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4">Request Received</h3>
-                  <p className="text-slate-600 mb-4">
-                    Our consultants will prepare your feasibility assessment, including talent availability, compensation benchmarks, and realistic hiring timelines.
-                  </p>
-                  <p className="text-sm text-slate-500 mb-8">You can expect to receive it within 48 hours.</p>
-                  <button onClick={() => { setIsModalOpen(false); setModalStep('form'); }} className="w-full py-3 border border-slate-200 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-colors">
-                    Close
-                  </button>
-                </div>
-              )}
+                <SubmissionForm kind="assessment-requests" />
+              </div>
             </motion.div>
           </>
         )}

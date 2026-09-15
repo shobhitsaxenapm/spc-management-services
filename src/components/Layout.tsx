@@ -19,15 +19,15 @@ export function Layout({ children, currentPage, setPage, navigateToContact }: La
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             {/* Logo */}
-            <div
-              className="cursor-pointer"
-              onClick={() => setPage('home')}
-            >
-              <SPCLogo size="md" />
+            <div className="flex items-center gap-3 lg:gap-5 shrink-0">
+              <div className="cursor-pointer" onClick={() => setPage('home')}>
+                <SPCLogo size="md" />
+              </div>
+              <img src="/dun-bradstreet.png" alt="Dun & Bradstreet D-U-N-S Registered" className="h-12 w-auto object-contain" width={236} height={150} />
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-4 lg:gap-8">
               <NavLink active={currentPage === 'solutions'} onClick={() => setPage('solutions')}>Solutions</NavLink>
               <NavLink active={currentPage === 'talent'} onClick={() => setPage('talent')}>Careers</NavLink>
               <NavLink active={currentPage === 'insights'} onClick={() => setPage('insights')}>Insights</NavLink>

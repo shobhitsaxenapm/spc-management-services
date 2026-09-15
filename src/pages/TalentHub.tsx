@@ -1,3 +1,4 @@
+import { SubmissionForm } from '../components/SubmissionForm';
 import React, { useState, useRef } from 'react';
 import { Page, ContactSource } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
@@ -247,6 +248,31 @@ export function TalentHub({ setPage, navigateToContact }: { setPage: (page: Page
   const displayedJobs = getDisplayedJobs();
   const hasMatchFilter = matchResults !== null;
   const noMatches = hasMatchFilter && displayedJobs.length === 0;
+
+  // Keep the prototype available for ATS integration, but never expose demo vacancies publicly.
+  const careersPortalEnabled = false;
+  if (!careersPortalEnabled) {
+    return (
+      <section className="flex-grow bg-slate-50 py-20 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+          <div>
+            <Briefcase className="w-12 h-12 text-[#006b83] mb-8" aria-hidden="true" />
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#006b83] mb-4">Careers at SPC</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Your next opportunity starts with a conversation.</h1>
+            <p className="text-lg leading-relaxed text-slate-600 mb-8">Share your CV and tell us where you’d like to work. Our recruitment team can consider your profile for future opportunities.</p>
+            <div className="rounded-xl border border-cyan-100 bg-cyan-50 p-6">
+              <h2 className="font-semibold text-[#073f51] mb-2">Job listings coming soon</h2>
+              <p className="text-sm leading-relaxed text-slate-600">We’re preparing our new careers portal. You can submit your CV here while online job applications are being introduced.</p>
+            </div>
+          </div>
+          <div className="p-6 sm:p-8 bg-white border border-slate-200 rounded-2xl shadow-sm">
+            <h2 className="text-2xl font-bold text-slate-900 mb-6">Send Us Your CV</h2>
+            <SubmissionForm kind="candidate-enquiries" />
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <motion.div

@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS submissions (
+ id VARCHAR(36) PRIMARY KEY,
+ request_key VARCHAR(36) NOT NULL UNIQUE,
+ payload_hash VARCHAR(64) NOT NULL,
+ kind VARCHAR(40) NOT NULL,
+ fields_json CLOB NOT NULL,
+ file_name VARCHAR(200),
+ file_type VARCHAR(100),
+ file_bytes BLOB,
+ received_at VARCHAR(40) NOT NULL,
+ recipient VARCHAR(254) NOT NULL,
+ state VARCHAR(20) NOT NULL DEFAULT 'PENDING',
+ attempts INTEGER NOT NULL DEFAULT 0,
+ next_attempt BIGINT NOT NULL DEFAULT 0
+);

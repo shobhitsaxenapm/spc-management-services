@@ -1,10 +1,12 @@
+import { SubmissionForm } from '../components/SubmissionForm';
 import React, { useState } from 'react';
+import { ArticleReader } from '../components/ArticleReader';
 import { Page, ContactSource } from '../types';
 import { motion } from 'motion/react';
 import { ArrowRight, ArrowUpRight, CheckCircle2, Mail, TrendingUp, Users, Clock, Building2, Globe, Landmark } from 'lucide-react';
 
 export function Insights({ setPage, navigateToContact }: { setPage: (page: Page) => void; navigateToContact: (source: ContactSource) => void }) {
-  const [subscribed, setSubscribed] = useState(false);
+  const [articleIndex, setArticleIndex] = useState<number | null>(null);
 
   return (
     <motion.div
@@ -263,14 +265,14 @@ export function Insights({ setPage, navigateToContact }: { setPage: (page: Page)
                 sectorColor: 'text-purple-600',
                 title: 'The case for HR outsourcing in mid-size Indian enterprises',
                 desc: 'Why growing companies are moving from in-house HR to outsourced models, and what to look for in a partner.',
-                read: '6 min read',
+                read: '4 min read',
               },
               {
                 sector: 'Government',
                 sectorColor: 'text-emerald-600',
                 title: 'Balancing speed and compliance in government recruitment',
                 desc: 'How state programs can staff at scale without compromising on compliance or candidate quality.',
-                read: '5 min read',
+                read: '4 min read',
               },
               {
                 sector: 'CSR',
@@ -279,14 +281,14 @@ export function Insights({ setPage, navigateToContact }: { setPage: (page: Page)
                 desc: 'What companies frequently get wrong in CSR program design, and how advisory support prevents costly mistakes.',
                 read: '4 min read',
               },
-            ].map((article) => (
+            ].map((article, index) => (
               <div key={article.title} className="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-sm transition-shadow cursor-pointer group flex flex-col">
                 <span className={`text-xs font-medium ${article.sectorColor} mb-3`}>{article.sector}</span>
                 <h3 className="text-base font-bold text-slate-900 mb-3 group-hover:text-emerald-600 transition-colors leading-snug">{article.title}</h3>
                 <p className="text-slate-600 text-sm mb-4 flex-grow">{article.desc}</p>
                 <div className="flex items-center justify-between text-xs text-slate-400 border-t border-slate-100 pt-3">
                   <span>{article.read}</span>
-                  <span className="flex items-center gap-1 font-medium text-slate-600 group-hover:text-emerald-600">Read <ArrowUpRight className="w-3 h-3" /></span>
+                  <button onClick={() => setArticleIndex(index)} aria-label={`Read ${article.title}`} className="flex items-center gap-1 font-medium text-[#006b83] hover:underline focus-visible:outline-2 focus-visible:outline-offset-4">Read the article <ArrowUpRight className="w-3 h-3" /></button>
                 </div>
               </div>
             ))}
@@ -304,27 +306,7 @@ export function Insights({ setPage, navigateToContact }: { setPage: (page: Page)
               <p className="text-slate-300 mb-6">
                 We share one update per quarter with workforce observations, project highlights, and sector analysis. No spam, no weekly newsletters.
               </p>
-              {subscribed ? (
-                <div className="flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-4 py-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                  <p className="text-emerald-300 text-sm font-medium">You're subscribed. You'll hear from us next quarter.</p>
-                </div>
-              ) : (
-                <form onSubmit={(e) => { e.preventDefault(); setSubscribed(true); }} className="flex gap-3">
-                  <div className="flex-grow relative">
-                    <Mail className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
-                    <input
-                      required
-                      type="email"
-                      placeholder="Your work email"
-                      className="w-full pl-10 pr-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
-                    />
-                  </div>
-                  <button type="submit" className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-lg transition-colors whitespace-nowrap">
-                    Subscribe
-                  </button>
-                </form>
-              )}
+              <SubmissionForm kind="subscriptions" dark />
             </div>
 
             {/* CTA */}
@@ -343,6 +325,7 @@ export function Insights({ setPage, navigateToContact }: { setPage: (page: Page)
           </div>
         </div>
       </section>
+      {articleIndex !== null && <ArticleReader index={articleIndex} onClose={() => setArticleIndex(null)} onArticle={setArticleIndex} />}
     </motion.div>
   );
 }

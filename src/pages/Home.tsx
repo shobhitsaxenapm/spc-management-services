@@ -18,8 +18,8 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00b1d9]/10 border border-[#00b1d9]/30 text-[#00b1d9] text-sm font-medium mb-6">
+              <span className="w-2 h-2 rounded-full bg-[#00b1d9] animate-pulse" />
               Established 2004 &middot; ISO 9001:2015 Certified
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-8">
@@ -32,7 +32,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={() => navigateToContact({ sourcePage: 'home', sourceSection: 'Hero', ctaName: 'Get in Touch' })}
-                className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-900/20"
+                className="px-8 py-4 bg-[#006b83] hover:bg-[#00849f] text-white rounded-lg font-medium flex items-center justify-center gap-2 transition-all shadow-lg shadow-[#006b83]/20"
               >
                 Get in Touch <ArrowRight className="w-4 h-4" />
               </button>
@@ -40,7 +40,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
                 onClick={() => setPage('talent')}
                 className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm border border-white/20 rounded-lg font-medium flex items-center justify-center gap-2 transition-all"
               >
-                View Open Positions
+                Explore Careers
               </button>
             </div>
           </div>
@@ -166,7 +166,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
             </div>
 
             <div className="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer" onClick={() => setPage('solutions')}>
-              <img src="https://images.unsplash.com/photo-1541872526845-86080452e46a?q=80&w=2070&auto=format&fit=crop" alt="Government" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
+              <img src="/government-programs.svg" alt="Illustration of an Indian government building" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent" />
               <div className="absolute bottom-0 left-0 p-8">
                 <Landmark className="w-8 h-8 text-emerald-400 mb-4" />
@@ -189,32 +189,32 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
       </section>
 
       {/* 6. Why SPC Stats */}
-      <section className="py-20 bg-emerald-900 text-white">
+      <section className="py-20 bg-[#073f51] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Why institutions trust SPC for mission-critical hiring.</h2>
-              <p className="text-emerald-100 text-lg mb-8">Two decades of execution across India's most complex sectors.</p>
-              <button onClick={() => navigateToContact({ sourcePage: 'home', sourceSection: 'Why SPC', ctaName: 'Learn About Our Approach' })} className="px-6 py-3 bg-white text-emerald-900 hover:bg-emerald-50 rounded-lg font-medium transition-colors">
+              <p className="text-[#d9f5fc] text-lg mb-8">Two decades of execution across India's most complex sectors.</p>
+              <button onClick={() => navigateToContact({ sourcePage: 'home', sourceSection: 'Why SPC', ctaName: 'Learn About Our Approach' })} className="px-6 py-3 bg-[#006b83] text-white hover:bg-[#00849f] rounded-lg font-medium transition-colors">
                 Discuss Your Requirements
               </button>
             </div>
             <div className="grid grid-cols-2 gap-6">
-              <div className="bg-emerald-800/50 p-6 rounded-xl border border-emerald-700/50">
-                <div className="text-4xl font-bold text-emerald-400 mb-2">20<span className="text-2xl">+</span></div>
-                <div className="text-sm text-emerald-100">Years of sector expertise</div>
+              <div className="bg-[#0b5268]/60 p-6 rounded-xl border border-[#00b1d9]/20">
+                <div className="text-4xl font-bold text-[#00b1d9] mb-2">20<span className="text-2xl">+</span></div>
+                <div className="text-sm text-[#d9f5fc]">Years of sector expertise</div>
               </div>
-              <div className="bg-emerald-800/50 p-6 rounded-xl border border-emerald-700/50">
-                <div className="text-4xl font-bold text-emerald-400 mb-2">10k<span className="text-2xl">+</span></div>
-                <div className="text-sm text-emerald-100">Professionals deployed across India</div>
+              <div className="bg-[#0b5268]/60 p-6 rounded-xl border border-[#00b1d9]/20">
+                <div className="text-4xl font-bold text-[#00b1d9] mb-2">10k<span className="text-2xl">+</span></div>
+                <div className="text-sm text-[#d9f5fc]">Professionals deployed across India</div>
               </div>
-              <div className="bg-emerald-800/50 p-6 rounded-xl border border-emerald-700/50">
-                <div className="text-4xl font-bold text-emerald-400 mb-2">50<span className="text-2xl">+</span></div>
-                <div className="text-sm text-emerald-100">Government & development programs supported</div>
+              <div className="bg-[#0b5268]/60 p-6 rounded-xl border border-[#00b1d9]/20">
+                <div className="text-4xl font-bold text-[#00b1d9] mb-2">50<span className="text-2xl">+</span></div>
+                <div className="text-sm text-[#d9f5fc]">Government & development programs supported</div>
               </div>
-              <div className="bg-emerald-800/50 p-6 rounded-xl border border-emerald-700/50">
-                <div className="text-4xl font-bold text-emerald-400 mb-2">Pan-India</div>
-                <div className="text-sm text-emerald-100">Recruitment reach across all states</div>
+              <div className="bg-[#0b5268]/60 p-6 rounded-xl border border-[#00b1d9]/20">
+                <div className="text-4xl font-bold text-[#00b1d9] mb-2">Pan-India</div>
+                <div className="text-sm text-[#d9f5fc]">Recruitment reach across all states</div>
               </div>
             </div>
           </div>
@@ -317,7 +317,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
           <p className="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">Our team is ready to help you find, deploy, and manage the right talent for your programs and projects.</p>
           <button
             onClick={() => navigateToContact({ sourcePage: 'home', sourceSection: 'Bottom CTA', ctaName: 'Get in Touch' })}
-            className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-medium transition-all shadow-lg shadow-emerald-900/20 inline-flex items-center gap-2"
+            className="px-8 py-4 bg-[#006b83] hover:bg-[#00849f] text-white rounded-lg font-medium transition-all shadow-lg shadow-[#006b83]/20 inline-flex items-center gap-2"
           >
             Get in Touch <ArrowRight className="w-4 h-4" />
           </button>

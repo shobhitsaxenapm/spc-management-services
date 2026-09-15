@@ -1,57 +1,10 @@
+import { SubmissionForm } from '../components/SubmissionForm';
 import React, { useState } from 'react';
 import { Page, ContactSource } from '../types';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, ShieldCheck, Users, Globe, Landmark, Heart, BrainCircuit, Building2, Award, Calendar, CheckCircle2, ArrowRight, Clock, FileText } from 'lucide-react';
 
-const INQUIRY_RESPONSES: Record<string, { title: string; detail: string; team: string }> = {
-  'Recruitment & Staffing': {
-    title: 'Your recruitment inquiry has been received.',
-    detail: 'A member of our recruitment practice will review your requirements and connect with you to discuss scope, timelines, and candidate profiles.',
-    team: 'Recruitment Practice',
-  },
-  'HR Outsourcing': {
-    title: 'Your HR outsourcing inquiry has been received.',
-    detail: 'Our HR operations team will assess your requirements and prepare a preliminary engagement overview for your review.',
-    team: 'HR Outsourcing Team',
-  },
-  'Government / Development Sector Project': {
-    title: 'Your project inquiry has been received.',
-    detail: 'Our Government and Development Sector practice will review your program requirements and reach out to discuss how we can support your initiative.',
-    team: 'Government & Development Practice',
-  },
-  'Management Consulting': {
-    title: 'Your consulting inquiry has been received.',
-    detail: 'A senior consultant will review your requirements and schedule a discussion to understand your organizational needs in detail.',
-    team: 'Consulting Practice',
-  },
-  'CSR Advisory': {
-    title: 'Your CSR advisory inquiry has been received.',
-    detail: 'Our CSR advisory team will review your requirements and connect with you to discuss strategy, compliance, and program design.',
-    team: 'CSR Advisory Team',
-  },
-  'General Inquiry': {
-    title: 'Your inquiry has been received.',
-    detail: 'Our team will review your message and route it to the appropriate practice. Someone will be in touch shortly.',
-    team: 'Client Relations',
-  },
-};
-
 export function Company({ setPage, contactSource, navigateToContact }: { setPage: (page: Page) => void; contactSource: ContactSource | null; navigateToContact: (source: ContactSource) => void }) {
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [submittedInquiry, setSubmittedInquiry] = useState('General Inquiry');
-  const [submittedName, setSubmittedName] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [inquiryType, setInquiryType] = useState('Recruitment & Staffing');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmittedName(firstName);
-    setSubmittedInquiry(inquiryType);
-    setFormSubmitted(true);
-  };
-
-  const inquiryResponse = INQUIRY_RESPONSES[submittedInquiry] || INQUIRY_RESPONSES['General Inquiry'];
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -133,10 +86,10 @@ export function Company({ setPage, contactSource, navigateToContact }: { setPage
       </section>
 
       {/* Vision */}
-      <section className="py-16 bg-emerald-900 text-white">
+      <section className="py-16 bg-[#073f51] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm font-medium text-emerald-300 uppercase tracking-wider mb-6">Our Vision</p>
-          <blockquote className="text-2xl md:text-3xl font-medium leading-relaxed text-emerald-50">
+          <p className="text-sm font-medium text-[#00b1d9] uppercase tracking-wider mb-6">Our Vision</p>
+          <blockquote className="text-2xl md:text-3xl font-medium leading-relaxed text-[#effbff]">
             "To be a socially sensitive, ethical consulting company trusted for its integrity, capability, and execution."
           </blockquote>
         </div>
@@ -329,127 +282,8 @@ export function Company({ setPage, contactSource, navigateToContact }: { setPage
 
             {/* Contact Form / Success State */}
             <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200">
-              {formSubmitted ? (
-                <div>
-                  {/* Success State */}
-                  <div className="text-center mb-8">
-                    <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-5">
-                      <CheckCircle2 className="w-8 h-8" />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">
-                      {submittedName ? `Thank you, ${submittedName}.` : 'Thank you.'}
-                    </h3>
-                    <p className="text-slate-600 text-sm">{inquiryResponse.title}</p>
-                  </div>
-
-                  {/* What Happens Next */}
-                  <div className="bg-white rounded-xl border border-slate-200 p-5 mb-6">
-                    <h4 className="font-bold text-slate-900 text-sm mb-4">What happens next</h4>
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-3">
-                        <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
-                          <span className="text-xs font-bold">1</span>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-slate-900">Inquiry routed to {inquiryResponse.team}</p>
-                          <p className="text-xs text-slate-500">Your message has been assigned to the relevant practice.</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
-                          <span className="text-xs font-bold">2</span>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-slate-900">Review and assessment</p>
-                          <p className="text-xs text-slate-500">{inquiryResponse.detail}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
-                          <span className="text-xs font-bold">3</span>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-slate-900">Response within 24-48 hours</p>
-                          <p className="text-xs text-slate-500">A team member will contact you via email or phone to take the conversation forward.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Direct Contact Fallback */}
-                  <div className="bg-slate-100 rounded-lg p-4 mb-6">
-                    <p className="text-xs text-slate-500 mb-1">Need an immediate response?</p>
-                    <p className="text-sm text-slate-700 font-medium">Call us at +91-11-26397200 or email contact@spc.co.in</p>
-                  </div>
-
-                  {/* Secondary Actions */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <button
-                      onClick={() => setPage('solutions')}
-                      className="px-4 py-2.5 border border-slate-200 text-slate-700 rounded-lg text-sm font-medium hover:bg-white transition-colors flex items-center justify-center gap-1.5"
-                    >
-                      <FileText className="w-3.5 h-3.5" /> Explore Services
-                    </button>
-                    <button
-                      onClick={() => setPage('insights')}
-                      className="px-4 py-2.5 border border-slate-200 text-slate-700 rounded-lg text-sm font-medium hover:bg-white transition-colors flex items-center justify-center gap-1.5"
-                    >
-                      <ArrowRight className="w-3.5 h-3.5" /> View Insights
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <>
-                  <h3 className="text-xl font-bold text-slate-900 mb-6">Send an Inquiry</h3>
-                  <form className="space-y-4" onSubmit={handleSubmit}>
-                    <input type="hidden" name="source_page" value={contactSource?.sourcePage || 'direct'} />
-                    <input type="hidden" name="source_section" value={contactSource?.sourceSection || 'direct'} />
-                    <input type="hidden" name="cta_name" value={contactSource?.ctaName || 'direct'} />
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">First Name</label>
-                        <input
-                          required
-                          type="text"
-                          value={firstName}
-                          onChange={(e) => setFirstName(e.target.value)}
-                          className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Last Name</label>
-                        <input required type="text" className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none" />
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">Work Email</label>
-                      <input required type="email" className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">Inquiry Type</label>
-                      <select
-                        value={inquiryType}
-                        onChange={(e) => setInquiryType(e.target.value)}
-                        className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none bg-white"
-                      >
-                        <option>Recruitment & Staffing</option>
-                        <option>HR Outsourcing</option>
-                        <option>Government / Development Sector Project</option>
-                        <option>Management Consulting</option>
-                        <option>CSR Advisory</option>
-                        <option>General Inquiry</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">Message</label>
-                      <textarea required rows={4} className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"></textarea>
-                    </div>
-                    <button type="submit" className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
-                      Send Message <Send className="w-4 h-4" />
-                    </button>
-                  </form>
-                </>
-              )}
+              <h3 className="text-xl font-bold text-slate-900 mb-6">Send an Inquiry</h3>
+              <SubmissionForm kind="inquiries" source={contactSource} />
             </div>
           </div>
         </div>
