@@ -49,7 +49,6 @@ export function Layout({ children, currentPage, setPage, navigateToContact }: La
                 </button>
               </div>
             </div>
-            </div>
 
             {/* Mobile Menu Toggle */}
             <div className="md:hidden flex items-center">
