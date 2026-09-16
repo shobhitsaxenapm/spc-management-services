@@ -12,7 +12,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
       className="flex flex-col"
     >
       {/* 1. Hero */}
-      <section className="relative pt-24 pb-32 overflow-hidden bg-slate-900">
+      <section className="relative pt-20 md:pt-24 pb-20 md:pb-32 overflow-hidden bg-slate-900">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent" />
 
@@ -48,7 +48,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
       </section>
 
       {/* 2. Credibility Bar */}
-      <section className="py-8 border-b border-slate-200 bg-white">
+      <section className="py-6 md:py-8 border-b border-slate-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
             <div className="flex items-center gap-2 text-sm font-medium text-slate-600">
@@ -68,7 +68,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
       </section>
 
       {/* 3. Trusted By - Client Strip */}
-      <section className="py-12 bg-white border-b border-slate-100">
+      <section className="py-10 md:py-12 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-semibold text-slate-400 uppercase tracking-[0.2em] mb-8 text-center">Trusted by organizations across sectors</p>
 
@@ -103,7 +103,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
       </section>
 
       {/* 4. Services Overview */}
-      <section className="py-24 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">End-to-end workforce solutions</h2>
@@ -147,7 +147,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
       </section>
 
       {/* 5. Sectors We Serve */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-16 md:py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Deep expertise across India's key sectors</h2>
@@ -189,7 +189,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
       </section>
 
       {/* 6. Why SPC Stats */}
-      <section className="py-20 bg-[#073f51] text-white">
+      <section className="py-16 md:py-20 bg-[#073f51] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -222,7 +222,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
       </section>
 
       {/* 7. Case Studies */}
-      <section className="py-24 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Execution in action.</h2>
@@ -270,7 +270,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
       </section>
 
       {/* 8. Insights Preview */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-16 md:py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div className="max-w-2xl">
@@ -311,7 +311,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
       </section>
 
       {/* 9. Final CTA */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-16 md:py-20 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to discuss your workforce needs?</h2>
           <p className="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">Our team is ready to help you find, deploy, and manage the right talent for your programs and projects.</p>

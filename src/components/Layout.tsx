@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Page, ContactSource } from '../types';
-import { Building2, ChevronRight, Globe, Users, ArrowRight, FileText, BarChart3, Briefcase, Mail, MapPin, Phone, Linkedin, Twitter } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Building2, ChevronRight, Globe, Users, ArrowRight, FileText, BarChart3, Briefcase, Mail, MapPin, Phone, Linkedin, Twitter, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { SPCLogo } from './SPCLogo';
 
 interface LayoutProps {
@@ -12,6 +12,13 @@ interface LayoutProps {
 }
 
 export function Layout({ children, currentPage, setPage, navigateToContact }: LayoutProps) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleMobileNav = (page: Page) => {
+    setPage(page);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-900">
       {/* Navigation */}
@@ -42,8 +49,46 @@ export function Layout({ children, currentPage, setPage, navigateToContact }: La
                 </button>
               </div>
             </div>
+            </div>
+
+            {/* Mobile Menu Toggle */}
+            <div className="md:hidden flex items-center">
+              <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 -mr-2 text-slate-600 hover:text-slate-900 transition-colors">
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Mobile Menu Panel */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="md:hidden bg-white border-b border-slate-200 overflow-hidden shadow-lg"
+            >
+              <div className="px-4 py-6 space-y-2 flex flex-col">
+                <MobileNavLink active={currentPage === 'solutions'} onClick={() => handleMobileNav('solutions')}>Solutions</MobileNavLink>
+                <MobileNavLink active={currentPage === 'talent'} onClick={() => handleMobileNav('talent')}>Careers</MobileNavLink>
+                <MobileNavLink active={currentPage === 'insights'} onClick={() => handleMobileNav('insights')}>Insights</MobileNavLink>
+                <MobileNavLink active={currentPage === 'company'} onClick={() => handleMobileNav('company')}>About</MobileNavLink>
+                <div className="pt-4 mt-2 border-t border-slate-100">
+                  <button
+                    onClick={() => {
+                      navigateToContact({ sourcePage: currentPage, sourceSection: 'Mobile Navigation', ctaName: 'Get in Touch' });
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded-lg transition-all text-center shadow-sm"
+                  >
+                    Get in Touch
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {/* Main Content */}
@@ -160,6 +205,19 @@ function NavLink({ children, active, onClick }: { children: React.ReactNode; act
       onClick={onClick}
       className={`text-sm font-medium transition-colors ${
         active ? 'text-emerald-600' : 'text-slate-600 hover:text-slate-900'
+      }`}
+    >
+      {children}
+    </button>
+  );
+}
+
+function MobileNavLink({ children, active, onClick }: { children: React.ReactNode; active: boolean; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`text-left px-4 py-3 rounded-lg font-medium transition-colors ${
+        active ? 'bg-emerald-50 text-emerald-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
       }`}
     >
       {children}

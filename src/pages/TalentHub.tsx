@@ -253,7 +253,7 @@ export function TalentHub({ setPage, navigateToContact }: { setPage: (page: Page
   const careersPortalEnabled = false;
   if (!careersPortalEnabled) {
     return (
-      <section className="flex-grow bg-slate-50 py-20 px-6">
+      <section className="flex-grow bg-slate-50 py-16 md:py-20 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
           <div>
             <Briefcase className="w-12 h-12 text-[#006b83] mb-8" aria-hidden="true" />
@@ -282,7 +282,7 @@ export function TalentHub({ setPage, navigateToContact }: { setPage: (page: Page
       className="flex flex-col bg-slate-50 min-h-screen"
     >
       {/* Hero */}
-      <section className="pt-20 pb-16 bg-slate-900 text-white relative overflow-hidden">
+      <section className="pt-16 md:pt-20 pb-12 md:pb-16 bg-slate-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -359,7 +359,7 @@ export function TalentHub({ setPage, navigateToContact }: { setPage: (page: Page
       </section>
 
       {/* Job Board */}
-      <section className="py-20">
+      <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
             <div className="flex items-center gap-3">

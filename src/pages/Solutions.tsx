@@ -15,7 +15,7 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
       className="flex flex-col bg-white"
     >
       {/* Hero */}
-      <section className="pt-20 pb-16 bg-slate-50 border-b border-slate-200">
+      <section className="pt-16 md:pt-20 pb-12 md:pb-16 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-6">
@@ -35,7 +35,7 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
       </section>
 
       {/* Primary Services (the big 3) */}
-      <section className="py-24">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Core services</h2>
@@ -164,7 +164,7 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
       </section>
 
       {/* Supporting Services */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      <section className="py-16 md:py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-2">Additional capabilities</h2>
@@ -211,7 +211,7 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
       </section>
 
       {/* How We Work */}
-      <section className="py-24">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">How we work</h2>
@@ -240,7 +240,7 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
       </section>
 
       {/* Proof - Execution Numbers */}
-      <section className="py-16 bg-[#073f51] text-white">
+      <section className="py-12 md:py-16 bg-[#073f51] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
@@ -264,7 +264,7 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
       </section>
 
       {/* Feasibility Assessment (redesigned) */}
-      <section className="py-24 bg-slate-50 border-t border-slate-200">
+      <section className="py-16 md:py-24 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Not sure where to start?</h2>
@@ -293,7 +293,7 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-16 md:py-20 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Have a workforce challenge?</h2>
           <p className="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">Whether it's a large-scale recruitment drive, an HR outsourcing decision, or staffing a government program, our team is ready to help.</p>

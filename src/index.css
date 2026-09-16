@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+html, body { overflow-x: hidden; width: 100%; }
+
 /* A quiet, paginated reading surface, independent of the site's marketing palette. */
 .spc-reader { margin:auto; padding:0; width:min(1100px, calc(100vw - 40px)); max-width:none; max-height:none; height:min(850px, calc(100dvh - 40px)); border:0; border-radius:18px; background:#faf7ef; color:#273e46; box-shadow:0 30px 100px #0008; }
 .spc-reader::backdrop { background:#081c2cbb; backdrop-filter:blur(7px); }
