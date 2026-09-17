@@ -114,7 +114,7 @@ export function Layout({ children, currentPage, setPage, navigateToContact }: La
                 </p>
               </div>
               <div className="flex gap-4 mt-8">
-                <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-emerald-500 hover:text-white transition-colors">
+                <a href="https://www.linkedin.com/company/spc-management-services/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-emerald-500 hover:text-white transition-colors">
                   <Linkedin className="w-4 h-4" />
                 </a>
                 <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-emerald-500 hover:text-white transition-colors">

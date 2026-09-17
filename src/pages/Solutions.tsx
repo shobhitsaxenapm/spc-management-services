@@ -3,9 +3,12 @@ import React, { useState } from 'react';
 import { Page, ContactSource } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
 import { Building2, Globe, Landmark, ArrowRight, CheckCircle2, X, Users, ShieldCheck, BrainCircuit, Heart, Search, FileText, ClipboardCheck, Handshake } from 'lucide-react';
+import { services } from '../data/services';
+import { ServiceDrawer } from '../components/ServiceDrawer';
 
 export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page) => void; navigateToContact: (source: ContactSource) => void }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<any>(null);
 
   return (
     <motion.div
@@ -176,7 +179,7 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
               <h3 className="text-lg font-bold text-slate-900 mb-2">Management Consulting</h3>
               <p className="text-slate-600 text-sm mb-4">HR strategy, organizational restructuring, and operational planning for organizations going through change or scale.</p>
               <button
-                onClick={() => navigateToContact({ sourcePage: 'solutions', sourceSection: 'Management Consulting', ctaName: 'Discuss consulting needs' })}
+                onClick={() => setSelectedService(services.find(s => s.id === 'consulting'))}
                 className="text-purple-600 font-medium text-sm inline-flex items-center gap-1 hover:gap-2 transition-all"
               >
                 Learn more <ArrowRight className="w-3.5 h-3.5" />
@@ -188,7 +191,7 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
               <h3 className="text-lg font-bold text-slate-900 mb-2">Project Management Support</h3>
               <p className="text-slate-600 text-sm mb-4">Implementation and management support for large-scale government and development sector projects, including monitoring and evaluation.</p>
               <button
-                onClick={() => navigateToContact({ sourcePage: 'solutions', sourceSection: 'Project Management', ctaName: 'Discuss project support' })}
+                onClick={() => setSelectedService(services.find(s => s.id === 'project'))}
                 className="text-slate-600 font-medium text-sm inline-flex items-center gap-1 hover:gap-2 transition-all"
               >
                 Learn more <ArrowRight className="w-3.5 h-3.5" />
@@ -200,7 +203,7 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
               <h3 className="text-lg font-bold text-slate-900 mb-2">CSR Advisory</h3>
               <p className="text-slate-600 text-sm mb-4">Strategy development, compliance, reporting, and program design for corporate and PSU clients meeting their CSR obligations.</p>
               <button
-                onClick={() => navigateToContact({ sourcePage: 'solutions', sourceSection: 'CSR Advisory', ctaName: 'Discuss CSR advisory' })}
+                onClick={() => setSelectedService(services.find(s => s.id === 'csr'))}
                 className="text-rose-600 font-medium text-sm inline-flex items-center gap-1 hover:gap-2 transition-all"
               >
                 Learn more <ArrowRight className="w-3.5 h-3.5" />
@@ -334,6 +337,13 @@ export function Solutions({ setPage, navigateToContact }: { setPage: (page: Page
           </>
         )}
       </AnimatePresence>
+
+      <ServiceDrawer 
+        selectedService={selectedService} 
+        onClose={() => setSelectedService(null)} 
+        navigateToContact={navigateToContact} 
+        sourcePage="solutions" 
+      />
     </motion.div>
   );
 }
