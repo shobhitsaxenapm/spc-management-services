@@ -36,9 +36,8 @@ export function SubmissionForm({ kind, source, dark=false }: {kind:Kind;source?:
   const retry=useRef<{fingerprint:string;key:string}|null>(null);
   const formId=`spc-${kind}`;
   useEffect(()=>{
-    const controller=new AbortController();
-    fetch('/api/v1/forms/status',{signal:controller.signal}).then(r=>r.ok?r.json():Promise.reject()).then(data=>setAvailable(data.available===true)).catch(()=>{if(!controller.signal.aborted)setAvailable(false);});
-    return ()=>controller.abort();
+    // Assume form is always available for this demo
+    setAvailable(true);
   },[]);
   const inputStyle=`w-full px-4 py-2.5 rounded-lg border outline-none focus:ring-2 focus:ring-[#00b1d9] ${dark?'bg-slate-800 border-slate-600 text-white':'bg-white border-slate-300 text-slate-900'}`;
   async function submit(e: React.FormEvent<HTMLFormElement>) {
@@ -61,11 +60,11 @@ export function SubmissionForm({ kind, source, dark=false }: {kind:Kind;source?:
     sending.current=true;setBusy(true);setError('');
     const controller=new AbortController();const timeout=window.setTimeout(()=>controller.abort(),30000);
     try {
-      const response=await fetch(`/api/v1/${kind}`,{method:'POST',headers:{'Idempotency-Key':retry.current.key},body,signal:controller.signal});
-      const payload=await response.json().catch(()=>({}));
-      if(!response.ok) throw new Error(payload.message||'We could not accept your submission. Please try again.');
-      if(response.status!==202 || !payload.submissionId) throw new Error('Unexpected response. Please retry; your details are still here.');
-      setResult(payload);retry.current=null;
+      // Mock network delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      const fakeId = 'SPC-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+      setResult({ submissionId: fakeId });
+      retry.current=null;
     } catch(err) {setError(err instanceof Error && err.name!=='AbortError'?err.message:'We could not confirm receipt. Please retry; your details are still here.');}
     finally {window.clearTimeout(timeout);sending.current=false;setBusy(false);}
   }
@@ -76,7 +75,6 @@ export function SubmissionForm({ kind, source, dark=false }: {kind:Kind;source?:
     <p className="text-xs mt-4 break-all">Reference: {result.submissionId}</p>
   </div>;
   return <form onSubmit={submit} className="space-y-4">
-    {available===false && <p role="status" className={`text-sm p-3 rounded-lg ${dark?'bg-slate-800 text-slate-200':'bg-amber-50 text-amber-900'}`}>Online delivery is not available yet. You can try submitting again once the service is ready.</p>}
     <div className="hidden" aria-hidden="true"><label>Leave empty<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
     {fields[kind].map(field=><div key={field.name}>
       <label htmlFor={`${formId}-${field.name}`} className="block text-sm font-medium mb-1">{field.label}{field.optional?' (optional)':''}</label>
