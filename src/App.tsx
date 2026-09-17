@@ -37,6 +37,8 @@ export default function App() {
       setTimeout(() => {
         document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
       }, 300);
+    } else {
+      window.scrollTo(0, 0);
     }
   }, [currentPage]);
 
