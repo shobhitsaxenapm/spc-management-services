@@ -66,5 +66,11 @@ export const perspectives: Perspective[] = [
    'Even where that trigger is not met, define a proportionate monitoring approach. Decide which records demonstrate completion, who checks them and when the findings will reach decision-makers. A short, candid account of limitations is more useful than an impressive number with no explanation.',
    'Before finalising reporting, reconcile the narrative with financial records and approved changes. Advisory support is most useful when it connects program design, governance and evidence throughout delivery. It cannot repair missing records simply by producing polished language at the end.'
   ],takeaway:'Design the evidence trail when the project starts; use it to improve decisions as well as reporting.',sources:[{label:'PIB: government response on CSR and impact assessment (2026)',url:'https://www.pib.gov.in/PressReleasePage.aspx?PRID=2226018&lang=1&reg=1'}]}
- ]}
+ ]},
+ {title:'Public Health Workforce Trends in India: 2026 Outlook',category:'Public Health',chapters:[
+    {title:'Executive Summary',paragraphs:['An analysis of hiring patterns, workforce gaps, and talent availability across National Health Mission and state health programs.','The demand for qualified public health professionals continues to outstrip supply in Tier 2 and Tier 3 cities. Retention strategies must move beyond compensation to include career progression and capacity building.'],takeaway:'Strategic workforce planning is essential for program success.',steps:['Analyze current gaps','Forecast future needs','Develop targeted sourcing strategies','Implement retention programs']}
+  ]},
+ {title:'NGO & Development Sector Salary Benchmarks: India',category:'Development Sector',chapters:[
+    {title:'Compensation Data 2026',paragraphs:['Compensation data and benchmarks across key roles in Indian NGOs, INGOs, and UN-supported programs.','Our latest data indicates a 12% year-over-year increase in median salaries for mid-level program managers. This shift is driven by increased funding for localization and grassroots initiatives.'],takeaway:'Competitive and structured compensation frameworks are critical to attract top talent in the development sector.'}
+  ]}
 ];

@@ -1,9 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Page, ContactSource } from '../types';
-import { ArrowRight, Building2, Globe, Users, ShieldCheck, BrainCircuit, Landmark, Award, Heart, MapPin, Calendar } from 'lucide-react';
-import { motion } from 'motion/react';
+import { ArticleReader } from '../components/ArticleReader';
+import { ArrowRight, Building2, Globe, Users, ShieldCheck, BrainCircuit, Landmark, Award, Heart, MapPin, Calendar, X, CheckCircle2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => void; navigateToContact: (source: ContactSource) => void }) {
+  const [selectedService, setSelectedService] = useState<any>(null);
+  const [articleIndex, setArticleIndex] = useState<number | null>(null);
+
+  const services = [
+    {
+      icon: Users, color: 'blue', title: 'Recruitment & Staffing', desc: 'Large-scale recruitment for government programs, public health missions, NGOs, and corporate organizations.',
+      features: ['Large-scale program recruitment', 'Specialist talent sourcing', 'Pan-India hiring capability', 'Public recruitment management'],
+      bestSuitedFor: [{ icon: Landmark, text: 'Government health programs' }, { icon: Globe, text: 'NGO and INGO programs' }, { icon: Building2, text: 'Corporate hiring at scale' }]
+    },
+    {
+      icon: ShieldCheck, color: 'emerald', title: 'HR Outsourcing', desc: 'Compliant workforce deployment, payroll management, and end-to-end HR operations support.',
+      features: ['Recruitment Process Outsourcing', 'Payroll & compliance management', 'Workforce administration', 'Contract staffing'],
+      bestSuitedFor: [{ icon: Building2, text: 'Mid-size and large enterprises' }, { icon: Landmark, text: 'Government contract staffing' }, { icon: Globe, text: 'Multi-location organizations' }]
+    },
+    {
+      icon: BrainCircuit, color: 'purple', title: 'Management Consulting', desc: 'Strategic advisory in human resources, organizational development, and operational planning.',
+      features: ['HR strategy and design', 'Organizational restructuring', 'Operational planning for scale', 'Change management'],
+      bestSuitedFor: [{ icon: Building2, text: 'Scaling corporate enterprises' }, { icon: Globe, text: 'Expanding INGOs' }]
+    },
+    {
+      icon: Globe, color: 'amber', title: 'Technical Assistance', desc: 'Management support for UN, INGO, and government programs across HR, finance, and logistics.',
+      features: ['UN and INGO program support', 'Finance and logistics management', 'Program coordination', 'Capacity building'],
+      bestSuitedFor: [{ icon: Globe, text: 'UN and INGO programs' }, { icon: Landmark, text: 'Government health missions' }, { icon: Users, text: 'Development sector initiatives' }]
+    },
+    {
+      icon: Landmark, color: 'slate', title: 'Project Management Support', desc: 'Implementation and management support for large-scale government and development sector projects.',
+      features: ['Large-scale project implementation', 'Monitoring and evaluation', 'Operations management', 'Stakeholder coordination'],
+      bestSuitedFor: [{ icon: Landmark, text: 'Government initiatives' }, { icon: Globe, text: 'Development sector projects' }]
+    },
+    {
+      icon: Heart, color: 'rose', title: 'CSR Advisory', desc: 'Consulting and advisory for corporate and PSU clients on CSR strategy, compliance, and program design.',
+      features: ['CSR strategy development', 'Compliance and reporting', 'Impact assessment', 'Program design'],
+      bestSuitedFor: [{ icon: Building2, text: 'Corporate enterprises' }, { icon: Landmark, text: 'Public Sector Undertakings (PSUs)' }]
+    },
+  ];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -111,14 +148,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: Users, color: 'blue', title: 'Recruitment & Staffing', desc: 'Large-scale recruitment for government programs, public health missions, NGOs, and corporate organizations.' },
-              { icon: ShieldCheck, color: 'emerald', title: 'HR Outsourcing', desc: 'Compliant workforce deployment, payroll management, and end-to-end HR operations support.' },
-              { icon: BrainCircuit, color: 'purple', title: 'Management Consulting', desc: 'Strategic advisory in human resources, organizational development, and operational planning.' },
-              { icon: Globe, color: 'amber', title: 'Technical Assistance', desc: 'Management support for UN, INGO, and government programs across HR, finance, and logistics.' },
-              { icon: Landmark, color: 'slate', title: 'Project Management Support', desc: 'Implementation and management support for large-scale government and development sector projects.' },
-              { icon: Heart, color: 'rose', title: 'CSR Advisory', desc: 'Consulting and advisory for corporate and PSU clients on CSR strategy, compliance, and program design.' },
-            ].map((service) => {
+            {services.map((service) => {
               const Icon = service.icon;
               const colorMap: Record<string, { bg: string; text: string; link: string }> = {
                 blue: { bg: 'bg-blue-50', text: 'text-blue-600', link: 'text-blue-600' },
@@ -136,7 +166,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
                   <p className="text-slate-600 mb-6">{service.desc}</p>
-                  <button onClick={() => setPage('solutions')} className={`${c.link} font-medium flex items-center gap-1 hover:gap-2 transition-all`}>
+                  <button onClick={() => setSelectedService(service)} className={`${c.link} font-medium flex items-center gap-1 hover:gap-2 transition-all`}>
                     Learn More <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -283,7 +313,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-lg transition-shadow group cursor-pointer" onClick={() => setPage('insights')}>
+            <div className="bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-lg transition-shadow group cursor-pointer" onClick={() => setArticleIndex(3)}>
               <div className="flex items-center gap-3 mb-6">
                 <span className="px-3 py-1 bg-emerald-50 text-emerald-600 text-xs font-bold rounded">REPORT</span>
                 <span className="text-sm text-slate-500">Q2 2026</span>
@@ -295,7 +325,7 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-lg transition-shadow group cursor-pointer" onClick={() => setPage('insights')}>
+            <div className="bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-lg transition-shadow group cursor-pointer" onClick={() => setArticleIndex(4)}>
               <div className="flex items-center gap-3 mb-6">
                 <span className="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold rounded">DATA BRIEF</span>
                 <span className="text-sm text-slate-500">Updated Quarterly</span>
@@ -323,6 +353,103 @@ export function Home({ setPage, navigateToContact }: { setPage: (page: Page) => 
           </button>
         </div>
       </section>
+
+      {/* Service Details Slide-Over Drawer */}
+      <AnimatePresence>
+        {selectedService && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedService(null)}
+              className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50"
+            />
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+              className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl z-50 flex flex-col overflow-hidden"
+            >
+              <div className="flex items-center justify-between p-6 border-b border-slate-100 bg-white">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${
+                    selectedService.color === 'blue' ? 'bg-blue-50 text-blue-600' :
+                    selectedService.color === 'emerald' ? 'bg-emerald-50 text-emerald-600' :
+                    selectedService.color === 'purple' ? 'bg-purple-50 text-purple-600' :
+                    selectedService.color === 'amber' ? 'bg-amber-50 text-amber-600' :
+                    selectedService.color === 'slate' ? 'bg-slate-100 text-slate-700' :
+                    'bg-rose-50 text-rose-600'
+                  }`}>
+                    <selectedService.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900">{selectedService.title}</h3>
+                </div>
+                <button 
+                  onClick={() => setSelectedService(null)}
+                  className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              
+              <div className="flex-1 overflow-y-auto p-6 bg-slate-50">
+                <p className="text-slate-600 leading-relaxed mb-8">{selectedService.desc}</p>
+                
+                <h4 className="font-bold text-slate-900 mb-4">Core Capabilities</h4>
+                <ul className="space-y-3 mb-8">
+                  {selectedService.features.map((feature: string, idx: number) => (
+                    <li key={idx} className="flex items-start gap-3 text-slate-700 text-sm">
+                      <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${
+                        selectedService.color === 'blue' ? 'text-blue-500' :
+                        selectedService.color === 'emerald' ? 'text-emerald-500' :
+                        selectedService.color === 'purple' ? 'text-purple-500' :
+                        selectedService.color === 'amber' ? 'text-amber-500' :
+                        selectedService.color === 'slate' ? 'text-slate-500' :
+                        'text-rose-500'
+                      }`} />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <h4 className="font-bold text-slate-900 mb-4">Best Suited For</h4>
+                <div className="bg-white rounded-xl p-5 border border-slate-100 mb-8">
+                  <ul className="space-y-4 text-sm text-slate-600">
+                    {selectedService.bestSuitedFor.map((item: any, idx: number) => (
+                      <li key={idx} className="flex items-center gap-3">
+                        <item.icon className="w-4 h-4 text-slate-400" />
+                        {item.text}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="p-6 bg-white border-t border-slate-100">
+                <button
+                  onClick={() => {
+                    setSelectedService(null);
+                    navigateToContact({ sourcePage: 'home', sourceSection: selectedService.title, ctaName: 'Discuss your requirement' });
+                  }}
+                  className={`w-full py-4 text-white font-medium rounded-lg transition-all shadow-lg flex items-center justify-center gap-2 ${
+                    selectedService.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700 shadow-blue-600/20' :
+                    selectedService.color === 'emerald' ? 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/20' :
+                    selectedService.color === 'purple' ? 'bg-purple-600 hover:bg-purple-700 shadow-purple-600/20' :
+                    selectedService.color === 'amber' ? 'bg-amber-600 hover:bg-amber-700 shadow-amber-600/20' :
+                    selectedService.color === 'slate' ? 'bg-slate-800 hover:bg-slate-900 shadow-slate-800/20' :
+                    'bg-rose-600 hover:bg-rose-700 shadow-rose-600/20'
+                  }`}
+                >
+                  Discuss your requirement <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+      {articleIndex !== null && <ArticleReader index={articleIndex} onClose={() => setArticleIndex(null)} onArticle={setArticleIndex} />}
     </motion.div>
   );
 }
